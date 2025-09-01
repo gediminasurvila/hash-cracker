@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Type Detector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hash Type Detector</h1>
+            <p>Identify the algorithm used to generate your hash</p>
+        </header>
+        
+        <main>
+            <div class="input-section">
+                <textarea 
+                    id="hashInput" 
+                    placeholder="Paste your hash here... (Ctrl+Enter to detect, Escape to clear)"
+                    rows="3"
+                ></textarea>
+                
+                <div class="action-buttons">
+                    <button id="detectButton" class="detect-btn">
+                        <span class="btn-text">Detect Hash Type</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                    
+                    <button id="crackButton" class="crack-btn">
+                        <span class="btn-text">Crack Hash</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                    
+                    <button id="clearButton" class="clear-btn">
+                        <span class="btn-text">Clear & Reset</span>
+                    </button>
+                </div>
+                
+                <div id="crackOptions" class="crack-options hidden">
+                    <div class="wordlist-section">
+                        <label for="wordlistFile" class="file-label">
+                            <span>Choose Wordlist File</span>
+                            <input type="file" id="wordlistFile" accept=".txt,.dic,.lst" />
+                        </label>
+                        <div class="file-info" id="fileInfo"></div>
+                    </div>
+                    
+                    <div class="hash-format-section">
+                        <label for="hashFormat">Hash Format (optional):</label>
+                        <select id="hashFormat">
+                            <option value="">Auto-detect</option>
+                            <option value="raw-md5">MD5</option>
+                            <option value="raw-sha1">SHA-1</option>
+                            <option value="raw-sha256">SHA-256</option>
+                            <option value="raw-sha512">SHA-512</option>
+                            <option value="nt">NTLM</option>
+                            <option value="mysql-sha1">MySQL 4.1+</option>
+                            <option value="mysql">MySQL 3.23</option>
+                        </select>
+                    </div>
+                    
+                    <button id="startCrackButton" class="start-crack-btn">
+                        <span class="btn-text">Start Cracking</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="resultSection" class="result-section hidden">
+                <div class="result-content">
+                    <h3>Detection Result</h3>
+                    <div id="resultText"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

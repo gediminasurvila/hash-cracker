@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  hash-detector:
+    build: .
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - /tmp:/tmp  # For temporary file handling
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/check-john"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

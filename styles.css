@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #2d3748;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #718096;
+    font-size: 1.1rem;
+}
+
+.input-section {
+    margin-bottom: 30px;
+}
+
+#hashInput {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+#hashInput:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#hashInput:disabled {
+    background-color: #f7fafc;
+    cursor: not-allowed;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.detect-btn, .crack-btn, .clear-btn, .start-crack-btn {
+    flex: 1;
+    padding: 16px 24px;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+.detect-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.crack-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.clear-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+}
+
+.start-crack-btn {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    width: 100%;
+    margin-top: 16px;
+}
+
+.detect-btn:hover:not(:disabled), .crack-btn:hover:not(:disabled), .clear-btn:hover:not(:disabled), .start-crack-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.detect-btn:hover:not(:disabled) {
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.crack-btn:hover:not(:disabled) {
+    box-shadow: 0 10px 20px rgba(240, 147, 251, 0.3);
+}
+
+.clear-btn:hover:not(:disabled) {
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+.start-crack-btn:hover:not(:disabled) {
+    box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+}
+
+.detect-btn:disabled, .crack-btn:disabled, .clear-btn:disabled, .start-crack-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.crack-options {
+    background: #f8fafc;
+    border: 2px dashed #cbd5e0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.wordlist-section {
+    margin-bottom: 20px;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #e2e8f0;
+    border: 2px dashed #a0aec0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.file-label:hover {
+    background: #edf2f7;
+    border-color: #667eea;
+}
+
+.file-label input[type="file"] {
+    display: none;
+}
+
+.file-info {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.hash-format-section {
+    margin-bottom: 16px;
+}
+
+.hash-format-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.hash-format-section select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+}
+
+.hash-format-section select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+@media (max-width: 768px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .detect-btn, .crack-btn, .clear-btn {
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hashInput {
+        font-size: 14px;
+    }
+    
+    .detect-btn, .crack-btn, .clear-btn, .start-crack-btn {
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.result-section {
+    background: #f7fafc;
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 4px solid #667eea;
+}
+
+.result-content h3 {
+    color: #2d3748;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+}
+
+.result-text {
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.hash-info {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.hash-type {
+    font-weight: 600;
+    color: #667eea;
+    font-size: 1.1rem;
+}
+
+.hash-details {
+    margin-top: 8px;
+    color: #718096;
+}
+
+.error {
+    color: #e53e3e;
+    background: #fed7d7;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #e53e3e;
+}
+
+.multiple-results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hash-option {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 24px;
+        margin: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+}
