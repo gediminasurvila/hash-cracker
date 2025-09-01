@@ -1,5 +1,0 @@
-example
-password
-test
-hello
-admin
